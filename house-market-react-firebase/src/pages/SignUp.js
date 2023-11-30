@@ -13,8 +13,11 @@ const SignUp = () => {
         password: ""
     })
     const { name, email, password } = formData
-    const onChange = () => {
-
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.id]: e.target.value
+        }))
     }
     return (
         <Layout>
@@ -31,11 +34,11 @@ const SignUp = () => {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                        <input type="password" value={password} onChange={onChange} className="form-control" id="password" />
-                        <span>show password <BsFillEyeFill className='text-danger' onChange={() => setShowPassword((prevState) => !prevState)}></BsFillEyeFill></span>
+                        <input type={showPassword ? "text" : "password"} value={password} onChange={onChange} className="form-control" id="password" />
+                        <span>show password <BsFillEyeFill className='text-danger ms-2' style={{ cursor: "pointer" }} onClick={() => setShowPassword(prevState => !prevState)}></BsFillEyeFill></span>
                     </div>
 
-                    <button type="submit" className="btn btn-primary">Sign Uo</button>
+                    <button type="submit" className="btn btn-primary">Sign Up</button>
                     <div>
                         <h6>Login with Google</h6>
                         <span>Already User</span> <Link to="/signin">Login</Link>
