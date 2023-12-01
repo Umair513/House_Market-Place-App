@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { BsFillEyeFill } from "react-icons/bs"
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { db } from "../firebase.config"
+import { doc, setDoc, serverTimestamp } from "firebase/firestore"
 import Layout from '../components/Layout/Layout'
 
 const SignUp = () => {
@@ -28,6 +29,10 @@ const SignUp = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password)
             const user = userCredential.user
             updateProfile(auth.currentUser, { displayName: name })
+            const formDataCopy = { ...formData }
+            delete formDataCopy.password
+            formDataCopy.timestamp = serverTimestamp()
+            await setDoc(doc(db, "users", user.uid), formDataCopy)
             alert("SignUp Success")
             navigate("/")
         } catch (error) {
