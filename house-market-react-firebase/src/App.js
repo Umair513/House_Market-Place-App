@@ -5,16 +5,21 @@ import { Route } from "react-router-dom";
 import Offers from "./pages/Offers";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Profile from "./pages/Profile";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <BrowserRouter>
+      <ToastContainer></ToastContainer>
       <Routes>
+
         <Route path="/" element={<HomePage></HomePage>}></Route>
         <Route path="/offers" element={<Offers></Offers>}></Route>
         <Route path="/signin" element={<SignIn></SignIn>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
-        <Route path="/profile" element={<SignIn></SignIn>}></Route>
+        <Route path="/profile" element={<Profile></Profile>}></Route>
       </Routes>
     </BrowserRouter >
   );

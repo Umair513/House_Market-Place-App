@@ -6,6 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase
 import { db } from "../firebase.config"
 import { doc, setDoc, serverTimestamp } from "firebase/firestore"
 import Layout from '../components/Layout/Layout'
+import { toast } from 'react-toastify'
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -33,10 +34,11 @@ const SignUp = () => {
             delete formDataCopy.password
             formDataCopy.timestamp = serverTimestamp()
             await setDoc(doc(db, "users", user.uid), formDataCopy)
-            alert("SignUp Success")
+            toast.success("SignUp Success")
             navigate("/")
         } catch (error) {
             console.log(error)
+            toast.error("Something Went Wrong")
         }
     }
     return (

@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { BsFillEyeFill } from "react-icons/bs"
 import Layout from '../components/Layout/Layout'
+import { toast } from 'react-toastify'
 
 const SignIn = () => {
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
         email: "",
-
         password: ""
     })
     const { email, password } = formData
@@ -26,10 +26,12 @@ const SignIn = () => {
             const auth = getAuth()
             const userCredential = await signInWithEmailAndPassword(auth, email, password)
             if (userCredential.user) {
+                toast.success("Login Success")
                 navigate("/")
             }
         } catch (error) {
             console.log(error)
+            toast.error("Invalid Email or Password")
         }
     }
     return (
