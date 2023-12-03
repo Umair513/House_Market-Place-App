@@ -7,6 +7,7 @@ import { db } from "../firebase.config"
 import { doc, setDoc, serverTimestamp } from "firebase/firestore"
 import Layout from '../components/Layout/Layout'
 import { toast } from 'react-toastify'
+import OAuth from '../components/OAuth'
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -62,7 +63,8 @@ const SignUp = () => {
 
                     <button type="submit" className="btn btn-primary">Sign Up</button>
                     <div>
-                        <h6>Login with Google</h6>
+
+                        <OAuth></OAuth>
                         <span>Already User</span> <Link to="/signin">Login</Link>
                     </div>
                 </form>

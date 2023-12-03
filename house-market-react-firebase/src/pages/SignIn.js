@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { BsFillEyeFill } from "react-icons/bs"
 import Layout from '../components/Layout/Layout'
 import { toast } from 'react-toastify'
+import OAuth from '../components/OAuth'
 
 const SignIn = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -52,8 +53,8 @@ const SignIn = () => {
                     </div>
 
                     <button type="submit" className="btn btn-primary">Sign In</button>
+                    <OAuth></OAuth>
                     <div className='mt-2'>
-
                         <span>New User?</span> <Link to="/signup">Sign Up</Link>
                     </div>
                 </form>
