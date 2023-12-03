@@ -48,6 +48,7 @@ const SignIn = () => {
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <input type={showPassword ? "text" : "password"} value={password} onChange={onChange} className="form-control" id="password" />
                         <span>show password <BsFillEyeFill className='text-danger ms-2' style={{ cursor: "pointer" }} onClick={() => setShowPassword(prevState => !prevState)}></BsFillEyeFill></span>
+                        <Link to="/forgot-password">forgot password</Link>
                     </div>
 
                     <button type="submit" className="btn btn-primary">Sign In</button>
